@@ -1,0 +1,143 @@
+﻿@model SpecificTransactionViewModel
+
+<div class="container">
+
+    <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark mb-1">
+        <div class=" row">
+            <div class="col-md-6">
+                <h1 class="display-4 font-italic text-center" style="margin:auto">@Model.Trans.TransactionTitle</h1>
+                <p class="lead my-3 text-center" style="margin:auto">@Model.Trans.TransactionDescription</p>
+            </div>
+            <div class="col-6">
+                <div class="media">
+                    <label>Meet the Poster</label>
+                    <img class="mr-3" src="@Model.CurrentUser.PicUrl" alt="@Model.CurrentUser.PicUrl" height="100" width="100">
+                    <div class="media-body">
+
+                        <label>Username : </label> @Model.CurrentUser.UserName  <h5 class="mt-0">View Profile</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form method="post" asp-action="Report">
+        <div class="modal" tabindex="-1" role="dialog" id="Report">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <h5 class=" col modal-title m-2 p-1" style="margin:auto">Report Transaction</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <p class="m-2 p-1">Reson for reporting</p>
+                    <div class="modal-body">
+                        <select class="  form-control custom-select" name="reason" id="ReportModal">
+                            <option selected >Choose A Reason</option>
+                            <option value="Innapropriate Language">Innapropriate Language</option>
+                            <option value="Not Enough Information">Not enough information</option>
+                            <option value="Suspicious User">Suspicious User</option>
+                            <option value="To Good To Be True">To good to be true</option>
+                            <option value="Suspicous Links">Supicous Links</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <div class="overflow-hidden form-group">
+                            <input class="form-control text-hide" name="idUser" value="@Model.CurrentUser.AcountID">
+                        </div>
+                        <textarea rows="3" cols="6" class="form-control p-3 " name="explination"id="TransactionTitle" placeholder="Please give some information about the transaction" name="Explanation"></textarea>
+
+                        <div class="overflow-hidden form-group">
+                            <input class="form-control text-hide" name="id" value="@Model.Trans.TransactionId">
+                        </div>
+
+                        <div class="modal-footer m-2 p-1">
+                            <button type="submit" class="btn btn-outline-dark">Submit Report</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        </div>
+    </form>
+    <div class="row mt-0">
+        <h3 class="col">
+            Transaction Information
+        </h3> 
+        <div class="col ml-5" style="float:right">
+        <button type="button" class=" ml-5 btn btn-outline-warning pull-right" style="float:right; margin-right:0" data-toggle="modal" data-target="#Report"> Report Transaction</button>
+        </div>
+    </div>
+    <style>
+        th{
+            margin:auto;
+        }
+        td{
+            align-content:center;
+        }
+        tr {
+            align-items:center;
+            margin:auto;
+        }
+        .ghost {
+            background-color:ghostwhite;
+
+        }
+    </style>
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">Currency Type</th>
+                <th scope="col">Currency For Trade</th>
+                <th scope="col">Desired Currency</th>
+                <th scope="col">Amount Desired</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Trans.CurrencyType</td>
+                <td>@Model.Trans.Amount</td>
+                <td>@Model.Trans.CurrrencyWanted</td>
+                <td>@Model.Trans.AmountWanted</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <div class="card-group mt-1" style="color:black">
+        <div class="card border-dark">
+            <div class="card-header text-center">
+                <h5 class="card-title ghost">Transaction Information</h5>
+            </div>
+                <div class="card-body text-center">
+                    <p class="card-text">@Model.Trans.TransactionInfo</p>
+                </div>
+        </div>
+        <div class="card border-dark">
+            <div class="card-header text-center"> <h5 class="card-title ghost">Make a Trade</h5></div>
+            <div class="card-body text-center" style="margin:auto">
+                <button type="button" class="btn btn-outline-dark" >Respond to transaction</button> 
+            </div>
+        </div>
+        <div class="card border-dark">
+            <div class="card-header text-center"><h5 class="card-title ghost">Transaction Description</h5></div>
+            <div class="card-body text-center">
+                <p class="card-text"><blockqoute>@Model.Trans.TransactionDescription</blockqoute></p>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-dark bg-dark pl-2 mt-2 pt-2">
+        <form asp-action="prev">
+                <input class="form-control text-hide" hidden name="id" value="@Model.Trans.TransactionId">
+            <button type="submit" class="btn btn-outline-success">Previous</button>
+        </form>
+
+        <form asp-action="next" class="float-right pr-2 pt-2">
+                <input class="form-control text-hide" hidden name="id" value="@Model.Trans.TransactionId">
+
+            <button type="submit" class="btn btn-success btn-outline-success">Next</button>
+        </form>
+        </nav>
+</div>
+

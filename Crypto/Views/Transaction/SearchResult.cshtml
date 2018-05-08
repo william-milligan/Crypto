@@ -1,0 +1,65 @@
+﻿@model Crypto.Models.ViewModels.TransactionsViewModel
+
+<div class="container">
+    <div class="card-body">
+        @if (TempData["message"] != null)
+        {
+            <div class="alert alert-success">@TempData["message"]</div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-4">
+            @Html.Partial("SearchForma", Model.SearchForma)
+            <div classs>
+                <div class="mt-4 col">
+                    <a asp-action="CreateTransaction" class="col mt-4 btn-lg btn btn-outline-dark">Create a Transaction</a>
+                </div>
+                <div class="mt-4 col">
+                    <a asp-action="List" class="col mt-4 btn-lg btn btn-outline-dark">Clear Search</a>
+                </div>
+                <div class="mt-4 col">
+                    <a asp-action="ImportWallet" class="col mt-4 btn btn-lg btn-outline-dark">Import Wallet</a>
+                </div>
+                <div class="mt-2 col" hidden>
+                    <a asp-controller="Admin" hidden asp-action="Create" disabled class="col btn mt-4 btn-outline-dark btn-lg">Create Account</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-8 mt-4">
+            <ul class="list-group justify-content-center">
+                @foreach (var p in Model.Transactions)
+    {
+            <li style="color:ghostwhite; list-style: none; border:medium" class="  p-2  bg-dark  list-group-item-primary align-content-center">
+                <label class="col-3"><strong>User Name</strong></label>
+                <span class="m-1 col-1 p-1">  @p.UserName </span>
+                <span class="col-1"></span>
+                <span class="m-1 col p-1">@p.TransactionTitle</span>
+            </li>
+            <li class="list-group-item list-group-item-secondary mb-4" style="background-color:ghostwhite; border:solid">
+                <label class="col-3"><strong> Currency Offered:</strong></label>
+                <span>@p.CurrencyType </span>
+                <label class="col-2"><strong>Amount:</strong></label>
+                <span> @p.Amount </span>
+                <label class="col-3 "><strong>Currency Wanted:</strong></label>
+                <span> @p.CurrrencyWanted</span>
+
+                <form method="post" class="col-3" asp-action="Stuff">
+                    <div class="overflow-hidden form-group">
+                        <input class="form-control text-hide" name="id" value="@p.TransactionId">
+                    </div>
+                    <button type="submit" class="btn btn-outline-dark">See Transation</button>
+                </form>
+
+
+            </li>
+
+}
+            </ul>
+            <form method="post"  asp-controller="Transaction" asp-action="SearchResult">
+                <div page-model="@Model.PagingInfo" page-action="SearchResult" page-classes-enabled="true" page-class="btn" page-class-normal="btn-secondary"
+                     page-class-selected="btn-outline-dark" class="btn-group pull-left m-1"></div>
+            </form>
+        </div>
+
+    </div>
+</div>

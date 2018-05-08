@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" asp-href-include="lib/bootstrap/dist/css/*.min.css" />
+    <link rel="stylesheet" href="~/lib/Font-Awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="~/css/Errors.css" />
+    <title>Transactions</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:black">
+        <a class="navbar-brand" asp-action="List1">CryptoDecrypted</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 nav-pills">
+            <li class="nav-item nav-pills active">
+                <a class="nav-link nav-pills" href="#">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item nav-pills">
+                <a class="nav-link nav-pill nav-underline" href="#">Articles</a>
+            </li>
+            <li class="nav-item nav-pills">
+                <a class="nav-link" href="#">Posts</a>
+            </li>
+            <li class="nav-item nav-pills">
+                <a class="nav-link" href="#">Transactions</a>
+            </li>
+            <li class="nav-item nav-pills">
+                <a class="nav-link" href="#">Profiles</a>
+            </li>
+            <li class="nav-item nav-pills">
+                <a class="nav-link" href="#">Contact Us</a>
+            </li>
+        </ul>
+    </nav>
+    @RenderBody()
+    <div class="mb-5"style="padding-top: 20px"></div>
+        <nav class="fixed-bottom mt-5 border-dark" style="background-color:ghostwhite; border-top:solid;bottom:0; margin-top:20px">
+            <div class="container">
+                <div style="text-align:center">
+                    <a class="btn" href="http://google.com/+"><i class="fa fa-google-plus fa-lg"></i></a>
+                    <a class="btn" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook fa-lg"></i></a>
+                    <a class="btn" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin fa-lg"></i></a>
+                    <a class="btn" href="http://twitter.com/"><i class="fa fa-twitter fa-lg"></i></a>
+                    <a class="btn" href="http://youtube.com/"><i class="fa fa-youtube fa-lg"></i></a>
+                    <a class="btn" href="mailto:"><i class="fa fa-envelope-o fa-lg"></i></a>
+                </div>
+            </div>
+        </nav>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+            asp-fallback-test="window.jQuery"
+            crossorigin="anonymous"
+            integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+            asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+            crossorigin="anonymous"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+    </script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+</body>
+</html>
+

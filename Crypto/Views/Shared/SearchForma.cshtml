@@ -1,0 +1,36 @@
+﻿@model SearchForm
+
+<div class="container">
+    <form asp-action="List" method="post" class="border-dark table-bordered mt-4 p-2 rounded-top " style="background-color:ghostwhite; color:black; border:solid">
+        <div class="card text-center">
+            <label class="p-4 col-auto bg-dark" style="margin:auto; color:ghostwhite; font-size:24px">Advanced Search</label>
+        </div><hr />
+        <div class="col-auto my-1 form-group">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Currency Offered</label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" asp-for="CurrencyType">
+                <option selected value="All">All</option>
+                @foreach(string p in Model.SupportedWallets)
+                {
+                    <option value="@p">@p</option>
+
+                }
+            </select>
+        </div>
+        <div class=" col-auto my-1 form-group">
+            <label class="mr-sm-2" for="exampleInputEmail1">Min Amount</label>
+            <input asp-for="MinAmount " type="number" class="form-control" id="minAmount">
+        </div>
+        <div class="col-auto my-1 form-group">
+            <label class="mr-sm-2" for="exampleInputPassword1">Max Amount</label>
+            <input asp-for="MaxAmount" type="number" class="form-control" id="maxAmount">
+        </div>
+        <div class=" col-auto my-1 form-group">
+            <label class="mr-sm-2" for="MaxAmout">UserName</label>
+            <input asp-for="UserName" type="text" class="form-control" id="exampleInputPassword1" placeholder="Username">
+
+        </div>
+        <div class="justify-content-center col-auto">
+            <button type="submit" class="col-auto my-1 mt-1 btn btn-outline-dark">Search</button>
+        </div>
+    </form>
+</div>

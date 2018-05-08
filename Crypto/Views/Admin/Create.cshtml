@@ -1,0 +1,39 @@
+﻿@model UserCreationModel
+<div class="bg-primary m-1 p-1 text-white"><h4>Create User</h4></div>
+<div asp-validation-summary=" All" class="text-danger"></div>
+
+<div style="background-color:#2172dd; color:black; font-weight:700;">
+    <div style="text-align:center; display:block; margin:auto">
+        <div class="row pb-5">
+            <div class="col-3" style="background-color:#324baf"></div>
+            <div class="col-6 pl-5" style="margin-top:15%">
+                <div style="color:red">
+                    @if (TempData["message"] != null)
+            {
+                @TempData["message"];
+
+    }
+                </div>
+                <div stlye="color:black">
+                    <form class="form-signin col-8 justify-content-center align-content-center" style="margin-left:90px" asp-action="Create" method="post">
+                        <div class="form-group">
+                            <label asp-for="UserName"></label>
+                            <input asp-for="UserName" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password"></label>
+                            <input asp-for="Password" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                        <a asp-controller="Transaction" asp-action="List" class="btn btn-secondary">Cancel</a>
+                    </form>
+                </div>
+            </div>
+            <div class="col-3" style="background-color:#324baf"></div>
+            </div>
+        </div>
+    </div>

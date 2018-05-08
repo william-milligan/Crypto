@@ -1,0 +1,101 @@
+﻿
+@model CreateTransactionViewModel
+<style>
+    input[type="text"], textarea, select, input[type="number"] {
+        background-color: ghostwhite;
+    }
+    .grey {
+        background-color: ghostwhite;
+    }
+</style>
+    <div style="color:black; font-weight:700">
+        <div class="row">
+            <div class="col-3" >
+                <img src="~/lib/Images/Money_Tree.png" height="215" width="215" style="display:block;margin:auto; align-content:center; margin-top: 50%"/>
+            </div>
+            <div class="col-6">
+                <div asp-validation-summary="All" class="text-danger col-12 ml-1 col" style="text-align:center; list-style:none"></div>
+                <form method="post" asp-action="CreateTransaction" class="justify-content-center">
+                    <div class="container col-12">
+                        <div class="col-12 ml-1 mt-1 col" style="text-align:center">
+                            <h1 style="justify-content:center">Create A Transaction</h1>
+                        </div>
+                        <div class="row col-12 mt-1 ml-1">
+                            <div class="col ">
+                                <label for="inputCurrency">Currency Offered</label>
+                                <select id="inputCurrency" class="form-control grey" asp-for="CurrencyType">
+                                    <option selected value="">Choose Currency Offered</option>
+                                    @foreach (string p in Model.SupportedWallets)
+                        {
+                            <option value="@p">@p</option>
+            }
+                                </select>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="CurrencyAmount">Amount to Offer </label>
+                                    <input type="number" class="form-control grey" id="CurrencyAmout" placeholder="Enter Amount" asp-for="Amount">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-12 mt-1 ml-1">
+                            <div class="col">
+                                <label for="WantedCurrency">Currency To Recieve</label>
+                                <select id="WantedCurrecnt" class="form-control grey" asp-for="CurrrencyWanted">
+                                    <option value="">Choose Curecny Wanted</option>
+                                    @foreach (string p in Model.SupportedWallets)
+                        {
+                            <option value="@p">@p</option>
+            }
+                                </select>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="CurrencyAmount">Amount to Recieve</label>
+                                    <input type="number" class="form-control" id="CurrencyAmout" placeholder="Enter Amount" asp-for="AmountWanted">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row col-12 mt-1 ml-1">
+                            <div class="col">
+                                <label>Title</label>
+                                <input type="text" class="form-control" id="TransactionTitle" placeholder="Transaction Title" asp-for="TransactionTitle" />
+                            </div>
+                        </div>
+                        <div class="row col-12 mt-1 ml-1">
+                            <div class="col">
+                                <label>Description</label>
+                                <input type="text" class="form-control" id="TransactionTitle" placeholder="Heading of your Transaction" asp-for="TransactionDescription" />
+                            </div>
+                        </div>
+                        <div class="row col-12 mt-1 ml-1">
+                            <div class="col">
+                                <label>Information</label>
+                                <textarea rows="4" cols="8" class="form-control grey" id="TransactionTitle" name="information" placeholder="Please give some information about the transaction &#10Such as When you will be active and how long the transaction is availble &#10TimeTime Availible: &#10Time transaction will be open for: &#10Can interested people message me:"></textarea>
+                            </div>
+                        </div>
+                        <div class=" row col-12 mt-1 ml-1">
+                            <div class=" col">
+                                <label>Choose the Wallet holding the currency for the transaction</label>
+                                <select id="Wallet" class="form-control grey" asp-for="Wallet">
+                                    <option value="">Choose Wallet</option>
+                                    @foreach (var p in Model.TransactionWallets)
+                        {
+                            <option value="@p.WalletName">@p.WalletName</option>
+            }
+                                </select>
+                                <small>Curency Type Offered must match the currency type of the wallet</small>
+                            </div>
+                        </div>
+                        <div class=" row col-12 col mt-4 ml-3 btn-group-lg">
+
+                            <button type="submit" style="color:black" class="btn btn-outline-primary btn-primary">Submit</button>
+                            <a class="btn btn-outline-danger ml-5" asp-action="List1">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>

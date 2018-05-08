@@ -1,0 +1,30 @@
+﻿
+
+
+
+<div style="color:black; font-weight:700;">
+    <div style="text-align:center; display:block; margin:auto">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 pl-5" style="margin-top:15%">
+                <div style="color:red">
+                    @if (TempData["message"] != null)
+                 {
+                        @TempData["message"];
+
+                 }
+                </div>
+                <form class="form-signin col-8 justify-content-center align-content-center" style="margin-left:90px; color:black" asp-action="Login" method="post">
+                    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                    <label for="inputEmail" class="sr-only">userName</label>
+                    <input type="text" name="userName" class="form-control" placeholder="UserName" required autofocus>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                </form>
+                <a class="btn btn-outline-sucess btn-block" asp-controller="Admin" asp-action="Create">Create an Account</a>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+</div>

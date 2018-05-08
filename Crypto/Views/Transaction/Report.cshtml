@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Report>
+
+@foreach (var p in Model)
+{   <div class="text-center"><h4>File a Report</h4></div>
+    <li class="list-group-item list-group-item-primary align-content-center">
+        <label class="col-3"><strong>User Name</strong></label>
+        <span class="m-1 col-1 p-1">  @p.Description </span>
+        <span class="col-1"></span>
+        <span class="m-1 col p-1">@p.Reason</span>
+    </li>
+}

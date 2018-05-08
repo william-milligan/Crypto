@@ -1,0 +1,25 @@
+﻿@model WalletModel
+
+<div class="container" style="margin:auto; color:black">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <form asp-action="ImportWallet" method="post">
+        <div class="form-group">
+            <label for="WalletName">Name of Wallet</label>
+            <input type="text" asp-for="@Model.Wally.WalletName" name ="WalletName" class="form-control" />
+        </div>
+        <div class="form-group">
+            <select class="form-control" name="CurrencyType" asp-for="@Model.Wally.CurrencyType">
+                <option value="" placeholder="Choose a valid currency Type"></option>
+                @foreach(string str in Model.AcceptedCurrency)
+                {
+                    <option value="@str">@str</option>
+                }
+            </select>
+        </div>
+        <div class="btn-group">
+            <button type="submit" class="btn btn-outline-success mr-4">Create</button>
+            <a class="btn btn-outline-warning" asp-action="List1">Cancel</a>
+        </div>
+    </form>
+
+</div>
